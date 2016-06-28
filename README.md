@@ -1,3 +1,13 @@
+[![Build Status](https://travis-ci.org/jackhardy1/bank_tech_test-1.svg?branch=master)](https://travis-ci.org/jackhardy1/bank_tech_test-1)
+
+To clone this repository, run:
+
+git clone git@github.com:jackhardy1/bank_tech_test-1.git
+
+To install all rspec and other gems, run 'bundle install'
+
+
+
 # The Bank Tech Test
 
 >When in doubt, go for the simplest solution
