@@ -6,9 +6,9 @@ class Account
 
   attr_reader :balance, :account_history
 
-  def initialize(balance = DEFAULT_BALANCE, transaction = Transaction)
+  def initialize(balance = DEFAULT_BALANCE, transaction_klass = Transaction)
     @balance = balance
-    @transaction = transaction
+    @transaction = transaction_klass
     @account_history = []
   end
 
@@ -18,21 +18,21 @@ class Account
   end
 
   def withdraw(amount, date = DateTime.now)
-    fail "insufficient funds" if not_enough_balance?(amount)
+    fail "insufficient funds" if insufficient_balance?(amount)
     @balance -= amount
     @account_history << @transaction.new(0, amount, @balance, date)
   end
 
   def print_statement
-    puts "date || credit || debit || balance"
-    @account_history.reverse_each do |transaction|
-      puts transaction.to_s
+    "date || credit || debit || balance"
+    @account_history.reverse.map do |transaction|
+      transaction.to_s
     end
   end
 
   private
 
-  def not_enough_balance?(amount)
+  def insufficient_balance?(amount)
     @balance < amount
   end
 end

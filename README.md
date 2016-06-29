@@ -2,9 +2,15 @@
 
 To clone this repository, run:
 
+```
 git clone git@github.com:jackhardy1/bank_tech_test-1.git
+```
 
-To install all rspec and other gems, run 'bundle install'
+To install all rspec and other gems, run
+
+```
+bundle install
+```
 
 
 
