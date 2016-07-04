@@ -24,13 +24,16 @@ class Account
   end
 
   def print_statement
-    "date || credit || debit || balance"
-    @account_history.reverse.map do |transaction|
-      transaction.to_s
+    @account_history.reverse.reduce(header) do |statement, transaction|
+      statement + transaction.to_s
     end
   end
 
   private
+
+  def header
+    "date || credit || debit || balance\n"
+  end
 
   def insufficient_balance?(amount)
     @balance < amount
@@ -38,8 +41,7 @@ class Account
 end
 
 a = Account.new
-
 a.deposit(1000)
 a.deposit(2000)
 a.withdraw(500)
-a.print_statement
+p a.print_statement
